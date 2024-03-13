@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const User = require("./Users/model");
+const cors = require("cors");
 const { hashPassword, comparePassword } = require("./middleware/auth");
 
 dotenv.config();
@@ -10,6 +11,8 @@ const app = express();
 const port = process.env.PORT || 5004;
 
 // Middleware
+
+app.use(cors());
 app.use(bodyParser.json());
 
 // Custom authentication middleware
